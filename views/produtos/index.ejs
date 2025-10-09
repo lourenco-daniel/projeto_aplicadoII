@@ -1,0 +1,40 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Produtos</h1>
+    <a class="btn btn-primary" href="/produtos/novo">Novo Produto</a>
+  </div>
+
+  <div class="row">
+    <% if (produtos && produtos.length) { %>
+      <% produtos.forEach(function(p) { %>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <% if (p.foto) { %>
+              <img src="<%= p.foto %>" class="card-img-top" alt="<%= p.nome %>">
+            <% } else { %>
+              <img src="/img/placeholder.png" class="card-img-top" alt="placeholder">
+            <% } %>
+            <div class="card-body">
+              <h5 class="card-title"><%= p.nome %></h5>
+              <p class="card-text"><%= p.descricao %></p>
+              <p><strong>R$ <%= p.preco.toFixed(2) %></strong></p>
+              <p>Categoria: <%= p.categoria %></p>
+              <p>Estoque: <%= p.quantidade %></p>
+              <a href="/produtos/<%= p.id %>/editar" class="btn btn-sm btn-outline-secondary">Editar</a>
+              <form action="/produtos/<%= p.id %>?_method=DELETE" method="POST" class="d-inline-block" onsubmit="return confirm('Confirmar exclusão?')">
+                <button class="btn btn-sm btn-danger">Excluir</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p>Nenhum produto cadastrado.</p>
+    <% } %>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>
