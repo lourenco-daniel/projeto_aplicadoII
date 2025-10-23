@@ -18,9 +18,9 @@ npm install
 Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
 
 ```env
-DB_NAME=sistema_pedidos
-DB_USER=foodtruck_user
-DB_PASS=123456
+DB_NAME=foodtruck_db
+DB_USER=seu_usuario
+DB_PASS=sua_senha
 DB_HOST=localhost
 DB_PORT=3306
 DB_DIALECT=mysql
@@ -255,4 +255,3 @@ ISC
 ---
 
 **Desenvolvido com ❤️ para otimizar a gestão de Food Trucks**
-
